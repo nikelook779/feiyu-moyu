@@ -347,14 +347,22 @@ window.addEventListener('keydown', (e) => {
 window.addEventListener('keyup', (e) => {
   if (e.code === 'Space') { e.preventDefault(); release(); }
 });
-window.addEventListener('mousedown', (e) => { if (e.target.closest('button,#dlg')) return; Audio2.init(); press(); });
+/* 触摸/鼠标事件的 target 可能是 Text 节点（没有 closest 方法），
+   直接 e.target.closest() 会在移动端抛异常、导致整段监听失效 —— 必须防御。 */
+const inUI = (t) => !!(t && typeof t.closest === 'function' && t.closest('button,#dlg'));
+
+window.addEventListener('mousedown', (e) => { if (inUI(e.target)) return; Audio2.init(); press(); });
 window.addEventListener('mouseup', () => release());
+/* 移动端：长按摸鱼。必须同时处理 touchcancel —— 来电、系统弹窗都会触发，
+   不释放的话角色会「卡在摸鱼态」直到被老板抓。 */
 window.addEventListener('touchstart', (e) => {
-  if (e.target.closest('button,#dlg')) return;
+  if (inUI(e.target)) return;
   e.preventDefault(); Audio2.init(); press();
 }, { passive: false });
 window.addEventListener('touchend', (e) => { e.preventDefault(); release(); }, { passive: false });
+window.addEventListener('touchcancel', () => release(), { passive: false });
 window.addEventListener('blur', release);
+document.addEventListener('visibilitychange', () => { if (document.hidden) release(); });
 
 $('dlgThread').addEventListener('click', (e) => { e.stopPropagation(); skipType(); });
 
