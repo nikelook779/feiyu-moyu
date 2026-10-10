@@ -1,7 +1,7 @@
 # 🐟 肥鱼摸鱼大作战
 
-[![在线试玩](https://img.shields.io/badge/在线试玩-▶-ff6b9d)](https://jue2865410-dot.github.io/feiyu-moyu/)
-[![Play](https://img.shields.io/badge/点击直接玩-JavaScript-yellow)](https://jue2865410-dot.github.io/feiyu-moyu/)
+[![仓库](https://img.shields.io/badge/在线试玩-Pages-ff6b9d)](../../)
+[![Play](https://img.shields.io/badge/点我直接玩-JavaScript-yellow)](../../)
 
 > 一个上班摸鱼 simulator。你是肥鱼，姐姐豆包坐在旁边工位，
 > 光头老板随时会推门进来 —— 被抓到正在摸鱼，当场开除。
@@ -17,7 +17,9 @@
 | 暂停 | `Esc` / `P` / 右上角按钮 |
 | 聊天 | 点击对话框下方的话题按钮 |
 
-**在线试玩**：https://jue2865410-dot.github.io/feiyu-moyu/
+**在线试玩**（GitHub Pages）：打开 <https://nikelook779.github.io/feiyu-moyu/>
+
+> 换用户名后这个地址会自动跟随；若打不开，点仓库首页右侧的 **Settings → Pages** 查看当前地址。
 
 **本地玩**：双击 `index.html` 即可，无需安装任何东西、无需联网。
 
