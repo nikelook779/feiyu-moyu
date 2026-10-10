@@ -563,8 +563,12 @@ function bossLeaveDone() {
 }
 
 /* 底部提示随状态变化 */
+const IS_TOUCH = matchMedia('(pointer: coarse)').matches;
+const KEY_HINT = IS_TOUCH
+  ? '按住屏幕摸鱼偷 token · 松开立刻切回认真工作'
+  : '按住 <kbd>空格</kbd> 或 <kbd>鼠标左键</kbd> 摸鱼偷 token · 松开立刻切回认真工作';
 const HINTS = {
-  normal: '按住 <kbd>空格</kbd> 或 <kbd>鼠标左键</kbd> 摸鱼偷 token · 松开立刻切回认真工作',
+  normal: KEY_HINT,
   alert: '⚠ 豆包在提醒你了 —— 赶紧松手切回工作！',
   inspect: '👔 老板正在巡视 · <b>绝对不能摸鱼</b>',
   cry: '😢 肥鱼在哭 · 按住摸鱼可以慢慢把心情拉回来',
