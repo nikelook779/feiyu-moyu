@@ -17,9 +17,9 @@
 | 暂停 | `Esc` / `P` / 右上角按钮 |
 | 聊天 | 点击对话框下方的话题按钮 |
 
-**在线试玩**（GitHub Pages）：打开 <https://nikelook779.github.io/feiyu-moyu/>
+**在线试玩**（GitHub Pages）：<https://nikelook779.github.io/feiyu-moyu/>
 
-> 换用户名后这个地址会自动跟随；若打不开，点仓库首页右侧的 **Settings → Pages** 查看当前地址。
+手机也能玩 —— 长按屏幕即摸鱼。
 
 **本地玩**：双击 `index.html` 即可，无需安装任何东西、无需联网。
 
