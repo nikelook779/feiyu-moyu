@@ -1,5 +1,8 @@
 # 🐟 肥鱼摸鱼大作战
 
+[![在线试玩](https://img.shields.io/badge/在线试玩-▶-ff6b9d)](https://jue2865410-dot.github.io/feiyu-moyu/)
+[![Play](https://img.shields.io/badge/点击直接玩-JavaScript-yellow)](https://jue2865410-dot.github.io/feiyu-moyu/)
+
 > 一个上班摸鱼 simulator。你是肥鱼，姐姐豆包坐在旁边工位，
 > 光头老板随时会推门进来 —— 被抓到正在摸鱼，当场开除。
 
@@ -14,7 +17,9 @@
 | 暂停 | `Esc` / `P` / 右上角按钮 |
 | 聊天 | 点击对话框下方的话题按钮 |
 
-**双击 `index.html` 即可开玩**，无需安装任何东西、无需联网。
+**在线试玩**：https://jue2865410-dot.github.io/feiyu-moyu/
+
+**本地玩**：双击 `index.html` 即可，无需安装任何东西、无需联网。
 
 > 更推荐 `start.bat`（Windows 一键启动）—— 会自动起本地服务器并打开浏览器，
 > 避免个别浏览器对 `file://` 的限制。
