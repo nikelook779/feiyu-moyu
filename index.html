@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>肥鱼摸鱼大作战 · 别让光头老板发现</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+
+    <!-- 背景 -->
+    <img id="bg" src="assets/bg_office.jpg" alt="办公室">
+    <div id="sunbeam"></div>
+    <div id="doorGlow"></div>
+
+    <!-- 姐姐 豆包（离镜头最远） -->
+    <div class="worker" id="dbWrap">
+      <div class="shadow"></div>
+      <img class="wimg" id="dbWork"  src="assets/p_db_work.png"  alt="豆包">
+      <img class="wimg alt" id="dbAlert" src="assets/p_db_alert.png" alt="豆包警觉">
+      <div class="bubble" id="dbBubble"><span></span></div>
+    </div>
+
+    <!-- 光头老板（离镜头最近，最大，压迫感最强） -->
+    <div class="boss-wrap" id="bossWrap">
+      <div class="shadow"></div>
+      <img id="boss" src="assets/p_boss.png" alt="光头老板">
+      <div id="bossMark">！</div>
+    </div>
+
+    <!-- 主角 肥鱼（中间景） -->
+    <div class="worker" id="fyWrap">
+      <div class="shadow"></div>
+      <img class="wimg" id="fyWork"  src="assets/p_fy_work.png"  alt="肥鱼">
+      <img class="wimg alt" id="fySlack" src="assets/p_fy_slack.png" alt="肥鱼摸鱼">
+      <div class="mood" id="fyMood">^ω^</div>
+    </div>
+
+    <!-- 特效层 -->
+    <div id="fx"></div>
+    <div id="flash"></div>
+    <div id="edge"></div>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div class="stat" id="statHappy">
+        <div class="row">
+          <span class="ico happy"></span>
+          <span class="name">开心值</span>
+          <span class="val" id="happyVal">72</span>
+        </div>
+        <div class="bar"><i id="happyBar" style="width:72%"></i></div>
+      </div>
+      <div class="stat" id="statRisk">
+        <div class="row">
+          <span class="ico risk"></span>
+          <span class="name">老板出现概率</span>
+          <span class="val" id="riskVal">0%</span>
+        </div>
+        <div class="bar"><i id="riskBar" style="width:0%"></i></div>
+      </div>
+      <div class="tokens">
+        <span class="tk-ico"></span>
+        <span id="tokenVal">0</span>
+        <em>偷吃token</em>
+      </div>
+      <div class="tokens best">
+        <span class="tk-ico"></span>
+        <span id="bestVal">0</span>
+        <em>历史最高</em>
+      </div>
+      <button id="btnPause" title="暂停 (Esc / P)">⏸ 暂停一下 (Esc)</button>
+    </div>
+
+    <!-- 暂停面板 -->
+    <div id="pauseCard">
+      <div class="pcard">
+        <h3>已暂停</h3>
+        <p>按 <kbd>Esc</kbd> 继续摸鱼</p>
+        <button class="btn" id="btnResume">继续摸鱼</button>
+        <button class="btn ghost" id="btnQuit">放弃这份工位</button>
+      </div>
+    </div>
+
+    <!-- 豆包对话面板（galgame 式底部对话框，放在玩家这侧） -->
+    <div id="dlg">
+      <div id="dlgThread"></div>
+      <div id="dlgOpts"></div>
+      <div id="dlgBar"><i></i></div>
+    </div>
+
+    <!-- 哭泣倒计时 -->
+    <div id="cryBar"><span>😢 肥鱼哭了 · 老板已经在路上了</span><i id="cryFill"></i></div>
+
+    <!-- 巡视倒计时 -->
+    <div id="inspect"><span id="inspectTxt">老板巡视中· 快切回认真工作</span><i id="inspectBar"><b id="inspectFill"></b></i></div>
+
+    <!-- 底部提示 -->
+    <div id="hint"><span id="hintText">按住 <kbd>空格</kbd> 或 <kbd>鼠标左键</kbd> 摸鱼偷 token · 松开立刻切回认真工作</span></div>
+
+    <!-- 覆盖层 -->
+    <div id="overlay" class="show">
+      <div class="card" id="cardStart">
+        <h1>肥鱼摸鱼大作战</h1>
+        <p class="sub">姐姐豆包就在旁边工位 —— 但老板随时会推门进来</p>
+
+        <div class="diffs">
+          <button class="diff" data-d="0">
+            <b>🐟 摸鱼学徒</b><i>老板不怎么来，适合先熟悉玩法</i>
+          </button>
+          <button class="diff on" data-d="1">
+            <b>⚖️ 正常上班</b><i>标准节奏，推荐第一次玩选这个</i>
+          </button>
+          <button class="diff" data-d="2">
+            <b>💀 卷王之王</b><i>老板频繁光顾，一不小心就被开除</i>
+          </button>
+        </div>
+
+        <ul class="rules">
+          <li><b>按住</b> 摸鱼：偷 token，开心值涨，老板出现概率也涨</li>
+          <li><b>松开</b> 装忙：开心值慢慢掉，但概率回落</li>
+          <li>概率见底前老板就推门了，被抓到正在摸鱼 → <b class="bad">你被开除了</b></li>
+          <li>开心值太低会<b class="bad">当场哭泣</b>，劝退倒计时结束就走人</li>
+        </ul>
+        <button class="btn" id="btnStart">开始上班</button>
+        <p class="best-line">历史最高 <b id="bestStart">0</b> 个 token</p>
+      </div>
+
+      <div class="card" id="cardOver">
+        <div class="stamp" id="stamp">解 雇 通 知</div>
+        <h2 id="overTitle">你被开除了！</h2>
+        <p id="overSub">光头老板在你摸鱼推门而入 —— 当场抓获。</p>
+        <div class="score"><span id="finalTokens">0</span><em>个 token</em></div>
+        <div id="newRecord"></div>
+        <button class="btn" id="btnRetry">重新入职</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="dialogues.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
