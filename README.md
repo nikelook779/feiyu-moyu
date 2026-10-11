@@ -1,7 +1,17 @@
 # 🐟 肥鱼摸鱼大作战
 
-[![仓库](https://img.shields.io/badge/在线试玩-Pages-ff6b9d)](../../)
-[![Play](https://img.shields.io/badge/点我直接玩-JavaScript-yellow)](../../)
+## 🎮 在线试玩
+
+# **[▶ 点这里直接开玩 ▶](https://nikelook779.github.io/feiyu-moyu/)**
+
+**https://nikelook779.github.io/feiyu-moyu/**
+
+📱 手机也能玩，电脑手机同一个网址 · 长按屏幕即摸鱼 · 无需下载、无需登录
+
+> 打不开？地址是 `nikelook779.github.io/feiyu-moyu/`，
+> 注意 `.github.io` 中间有短横线。首次打开需等几秒加载。
+
+---
 
 > 一个上班摸鱼 simulator。你是肥鱼，姐姐豆包坐在旁边工位，
 > 光头老板随时会推门进来 —— 被抓到正在摸鱼，当场开除。
